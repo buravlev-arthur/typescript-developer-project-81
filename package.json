@@ -1,0 +1,30 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Генератор форм",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf ./dist && tsc",
+    "start:dev": "npx nodemon",
+    "start:dev-experimental": "node --watch --loader=ts-node/esm ./src/index.ts",
+    "start": "npm run build && node dist/index.js",
+    "exec": "npx ts-node ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buravlev-arthur/typescript-developer-project-81.git"
+  },
+  "author": "Arthur Buravlev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buravlev-arthur/typescript-developer-project-81/issues"
+  },
+  "homepage": "https://github.com/buravlev-arthur/typescript-developer-project-81#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
