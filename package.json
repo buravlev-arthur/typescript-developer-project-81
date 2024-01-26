@@ -9,7 +9,9 @@
     "start:dev-experimental": "node --watch --loader=ts-node/esm ./src/index.ts",
     "start": "npm run build && node dist/index.js",
     "exec": "npx ts-node ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint .",
+    "test": "vitest",
+    "test-coverage": "npx vitest run --coverage"
   },
   "repository": {
     "type": "git",
@@ -22,9 +24,21 @@
   },
   "homepage": "https://github.com/buravlev-arthur/typescript-developer-project-81#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vitest/coverage-v8": "^1.2.2",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
     "nodemon": "^3.0.3",
     "rimraf": "^5.0.5",
+    "simple-git-hooks": "^2.9.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  },
+  "simple-git-hooks": {
+    "pre-push": "make lint"
   }
 }
