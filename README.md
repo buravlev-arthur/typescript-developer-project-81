@@ -1,2 +1,5 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/buravlev-arthur/typescript-developer-project-81/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/buravlev-arthur/typescript-developer-project-81/actions)
+[![Actions Status](https://github.com/buravlev-arthur/typescript-developer-project-81/actions/workflows/linting-and-testing.yml/badge.svg)](https://github.com/buravlev-arthur/typescript-developer-project-81/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7145c3ee14b9ef168410/maintainability)](https://codeclimate.com/github/buravlev-arthur/typescript-developer-project-81/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7145c3ee14b9ef168410/test_coverage)](https://codeclimate.com/github/buravlev-arthur/typescript-developer-project-81/test_coverage)
