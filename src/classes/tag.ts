@@ -1,5 +1,6 @@
 class Tag {
   private static readonly templates = {
+    form: '<form{attrs}>{text}</form>',
     input: '<input{attrs}>',
     br: '<br>',
     hr: '<hr>',
