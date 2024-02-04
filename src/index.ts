@@ -1,3 +1,3 @@
-import { HexletCode } from 'src/classes';
+import { HexletCode } from './classes';
 
 export default HexletCode;
