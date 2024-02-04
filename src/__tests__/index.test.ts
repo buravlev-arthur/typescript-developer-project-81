@@ -1,12 +1,12 @@
 import { test, describe, expect } from 'vitest';
-import comparePlainJSONs from 'src/utils';
-import HexletCode from 'src/classes/hexletCode';
-import type { Template } from 'src/types';
-import formOutput from 'src/__fixtures__/formOutput';
-import testJson1 from 'src/__fixtures__/testJson1.json';
-import testJson2 from 'src/__fixtures__/testJson2.json';
-import testJson3 from 'src/__fixtures__/testJson3.json';
-import testJson4 from 'src/__fixtures__/testJson4.json';
+import comparePlainJSONs from '../utils';
+import HexletCode from '../classes/hexletCode';
+import type { Template } from '../types';
+import formOutput from '../__fixtures__/formOutput';
+import testJson1 from '../__fixtures__/testJson1.json';
+import testJson2 from '../__fixtures__/testJson2.json';
+import testJson3 from '../__fixtures__/testJson3.json';
+import testJson4 from '../__fixtures__/testJson4.json';
 
 describe('Utils testing', () => {
   test('comparePlainJSONs', () => {
