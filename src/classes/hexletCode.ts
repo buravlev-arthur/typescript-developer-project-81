@@ -1,4 +1,4 @@
-import { omit } from 'lodash';
+import { omit, capitalize } from 'lodash';
 import type { Template, Params, Attrs } from 'src/types';
 import Tag from './tag';
 
@@ -12,14 +12,11 @@ class HexletCode {
       cols: 20,
       rows: 40,
     },
-    input: {
-      type: 'text',
-    },
   };
 
   constructor(
     private template: Template,
-    private formItems: string[] = [],
+    private formItems: Tag[] = [],
   ) {}
 
   static formFor(
@@ -36,32 +33,49 @@ class HexletCode {
 
     generateFormItems(form);
 
-    const formTagContainer = new Tag('form', formAttrs, form.formItems.join(''));
+    const fromItemsAsString = form.formItems
+      .map((item) => item.toString())
+      .join('');
+
+    const formTagContainer = new Tag('form', formAttrs, fromItemsAsString);
     return formTagContainer.toString();
   }
 
   public input(
     inputName: string,
-    attrs?: Attrs & { as?: keyof Omit<typeof HexletCode.defaultAttrs, 'form'> },
-  ) {
+    attrs?: Attrs & { as?: 'textarea' },
+  ): void {
     if (!(inputName in this.template)) {
       throw Error(`Error: Field '${inputName}' does not exist in the template.`);
     }
 
+    const label = new Tag('label', { for: inputName }, capitalize(inputName));
+    this.formItems.push(label);
+
     const tagName = attrs?.as ?? 'input';
 
-    const tagAttrs = {
-      name: inputName,
-      ...HexletCode.defaultAttrs[tagName],
-      value: this.template[inputName],
-      ...omit(attrs, 'as'),
-    };
+    if (tagName === 'input') {
+      const inputAttrs = {
+        name: inputName,
+        type: 'text',
+        value: this.template[inputName],
+        ...omit(attrs, 'as'),
+      };
+      this.formItems.push(new Tag('input', inputAttrs));
+    }
 
-    const formItem = tagName === 'input'
-      ? new Tag(tagName, tagAttrs)
-      : new Tag(tagName, omit(tagAttrs, 'value'), this.template[inputName]);
+    if (tagName === 'textarea') {
+      const textareaAttrs = {
+        name: inputName,
+        ...HexletCode.defaultAttrs[tagName],
+        ...omit(attrs, 'as'),
+      };
+      this.formItems.push(new Tag(tagName, textareaAttrs, this.template[inputName]));
+    }
+  }
 
-    this.formItems.push(formItem.toString());
+  public submit(text: string = 'Save') {
+    this.formItems.push(new Tag('input', { type: 'submit', value: text }));
   }
 }
 

@@ -55,4 +55,20 @@ describe('HexletCode class testing', () => {
       f.input('age');
     })).toThrowError('Error: Field \'age\' does not exist in the template.');
   });
+
+  test('creating with submit', () => {
+    expect(HexletCode.formFor(template, { method: 'post' }, (f) => {
+      f.input('name');
+      f.input('job');
+      f.submit();
+    })).toEqual(formOutput.formWithSubmit);
+  });
+
+  test('creating with named submit', () => {
+    expect(HexletCode.formFor(template, { method: 'post' }, (f) => {
+      f.input('name');
+      f.input('job');
+      f.submit('Create');
+    })).toEqual(formOutput.formWithNamedSubmit);
+  });
 });

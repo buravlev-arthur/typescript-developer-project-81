@@ -3,16 +3,9 @@ import type { Attrs } from 'src/types';
 class Tag {
   private static readonly templates = {
     form: '<form{attrs}>{text}</form>',
+    label: '<label{attrs}>{text}</label>',
     input: '<input{attrs}>',
     textarea: '<textarea{attrs}>{text}</textarea>',
-    br: '<br>',
-    hr: '<hr>',
-    wbr: '<wbr>',
-    img: '<img{attrs}>',
-    area: '<area{attrs}',
-    keygen: '<keygen{attrs}>',
-    label: '<label{attrs}>{text}</label>',
-    div: '<div{attrs}>{text}</div>',
   };
 
   constructor(

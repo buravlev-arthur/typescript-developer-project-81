@@ -1,5 +1,4 @@
 import Tag from './tag';
+import HexletCode from './hexletCode';
 
-const filler = null;
-
-export { Tag, filler };
+export { Tag, HexletCode };
