@@ -5,8 +5,8 @@ import Tag from './tag';
 class HexletCode {
   private static readonly defaultAttrs = {
     form: {
-      action: '#',
       method: 'post',
+      action: '#',
     },
     textarea: {
       cols: 20,
@@ -66,8 +66,8 @@ class HexletCode {
 
     if (tagName === 'textarea') {
       const textareaAttrs = {
-        name: inputName,
         ...HexletCode.defaultAttrs[tagName],
+        name: inputName,
         ...omit(attrs, 'as'),
       };
       this.formItems.push(new Tag(tagName, textareaAttrs, this.template[inputName]));
