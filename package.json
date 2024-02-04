@@ -1,8 +1,8 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "Генератор форм",
-  "main": "bin/index.js",
+  "description": "Генератор HTML-форм",
+  "main": "src/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "start:dev": "npx nodemon",
