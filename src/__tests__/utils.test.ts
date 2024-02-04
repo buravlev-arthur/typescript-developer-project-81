@@ -17,10 +17,42 @@ describe('Utils testing', () => {
 });
 
 describe('HexletCode class testing', () => {
-  test('creating form tag', () => {
-    const template: Template = { name: 'rob', job: 'hexlet', gender: 'm' };
+  const template: Template = { name: 'rob', job: 'hexlet' };
 
+  test('creating form tag', () => {
     expect(HexletCode.formFor(template, {}, () => {})).toEqual(formOutput.formWithoutProps);
     expect(HexletCode.formFor(template, { url: '/users' }, () => {})).toEqual(formOutput.formWithUrl);
+  });
+
+  test('creating input and textarea', () => {
+    expect(HexletCode.formFor(template, { method: 'post' }, (f: HexletCode) => {
+      f.input('name');
+      f.input('job', { as: 'textarea' });
+    })).toEqual(formOutput.formWithInputAndTextarea);
+  });
+
+  test('creating with custom attrs', () => {
+    expect(HexletCode.formFor(template, {}, (f) => {
+      f.input('name', { class: 'user-input' });
+      f.input('job');
+    })).toEqual(formOutput.formWithInputCustomAttrs);
+  });
+
+  test('creating with default attr values', () => {
+    expect(HexletCode.formFor(template, {}, (f) => f.input('job', { as: 'textarea' })))
+      .toEqual(formOutput.formElementsWithDefaultAttrValues);
+  });
+
+  test('creating with overwritten attr values', () => {
+    expect(HexletCode.formFor(template, { url: '#' }, (f) => f.input('job', { as: 'textarea', rows: 50, cols: 50 })))
+      .toEqual(formOutput.formElemenetsWithOverwrittenValues);
+  });
+
+  test('creating with nonexistent form item', () => {
+    expect(() => HexletCode.formFor(template, { url: '/users' }, (f) => {
+      f.input('name');
+      f.input('job', { as: 'textarea' });
+      f.input('age');
+    })).toThrowError('Error: Field \'age\' does not exist in the template.');
   });
 });

@@ -1,9 +1,8 @@
-export type Template = {
-  name: string;
-  job: string;
-  gender: 'm' | 'f';
-};
+export type Template = { [key: string]: string };
 
 export type Params = {
+  method?: 'get' | 'post',
   url?: string;
 };
+
+export type Attrs = { [key: string]: string | number };

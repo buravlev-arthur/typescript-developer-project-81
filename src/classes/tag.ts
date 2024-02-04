@@ -1,7 +1,10 @@
+import type { Attrs } from 'src/types';
+
 class Tag {
   private static readonly templates = {
     form: '<form{attrs}>{text}</form>',
     input: '<input{attrs}>',
+    textarea: '<textarea{attrs}>{text}</textarea>',
     br: '<br>',
     hr: '<hr>',
     wbr: '<wbr>',
@@ -14,7 +17,7 @@ class Tag {
 
   constructor(
     private name: keyof typeof Tag.templates,
-    private attrs: { [key: string]: string } = {},
+    private attrs: Attrs = {},
     private text: string = '',
   ) {}
 

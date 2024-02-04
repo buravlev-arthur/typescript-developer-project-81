@@ -2,7 +2,6 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Генератор форм",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
@@ -25,6 +24,7 @@
   },
   "homepage": "https://github.com/buravlev-arthur/typescript-developer-project-81#readme",
   "devDependencies": {
+    "@types/lodash": "^4.14.202",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "@vitest/coverage-istanbul": "^1.2.2",
@@ -42,5 +42,8 @@
   },
   "simple-git-hooks": {
     "pre-push": "make lint"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
